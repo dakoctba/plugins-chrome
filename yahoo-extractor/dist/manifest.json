@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+
+  "name": "Yahoo Contacts Extractor",
+  "description": "Extract all your yahoo contacts with ease",
+  "version": "0.0.1",
+
+  "icons": {
+    "128": "logo.png"
+  },
+
+  "page_action": {
+    "default_icon": {
+      "38": "logo.png"
+    }
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.mail.yahoo.com/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "*://*.mail.yahoo.com/*"
+  ]
+}

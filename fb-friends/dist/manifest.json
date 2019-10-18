@@ -1,0 +1,45 @@
+{
+  "manifest_version": 2,
+
+  "name": "FB Auto Connector",
+  "description": "Automation for Adding Facebook Friends",
+  "version": "0.0.1",
+
+  "icons": {
+    "128": "logo.png"
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "38": "logo.png"
+    }
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+
+  "web_accessible_resources": [
+    "inject_fb.js"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://*.facebook.com/*"],
+      "js": ["contentscript_fb.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications",
+    "contextMenus",
+    "webRequest",
+		"webRequestBlocking",
+    "*://*.facebook.com/*"
+  ]
+}
